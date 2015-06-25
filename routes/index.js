@@ -22,9 +22,22 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
-// router.post('/login', function(req, res, next) {
-//   userCollection.findOne({ user: req.body.user_name}, function(err, data){
-//     if(bcrypt.hashSync(req.body.user_pass) === bcrypt.compareSync)
-//   });
-// });
+router.post('/login', function(req, res, next) {
+  userCollection.findOne({ user: req.body.user_name}, function(err, data) {
+    if(bcrypt.compareSync(req.body.user_pass, data.pass)) {
+      res.redirect('/yay');
+    }
+    else {
+      res.redirect('/boo');
+    }
+  });
+});
+
+router.get('/yay', function(req, res, next) {
+  res.render('yay');
+});
+
+router.get('/boo', function(req, res, next){
+  res.render('boo');
+});
 module.exports = router;
