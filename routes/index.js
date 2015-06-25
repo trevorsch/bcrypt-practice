@@ -18,4 +18,13 @@ router.post('/signup', function(req, res, next) {
   res.redirect('/');
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
+
+// router.post('/login', function(req, res, next) {
+//   userCollection.findOne({ user: req.body.user_name}, function(err, data){
+//     if(bcrypt.hashSync(req.body.user_pass) === bcrypt.compareSync)
+//   });
+// });
 module.exports = router;

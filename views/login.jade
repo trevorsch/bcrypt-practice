@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Enter Login Information
+    
+  form(action='/login' method='post')
+    label(for='user_name') User Name
+    input(type='text' name='user_name')
+    br
+    label(for='user_pass') Password
+    input(type='text' name='user_pass')
+    br
+    input(type='submit' value='Log In')
