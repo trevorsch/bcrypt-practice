@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  form(action='/signup' method='post')
+    label(for='user_name') User Name
+    input(type='text' name='user_name')
+    br
+    label(for='pass') Password
+    input(type='text' name='pass')
+    br  
+    label(for='var_pass') Repeat Password
+    input(type='text' name='var_pass')  
+    br
+    input(type='submit' value='Create')
