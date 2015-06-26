@@ -24,12 +24,13 @@ router.get('/login', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   userCollection.findOne({ user: req.body.user_name}, function(err, data) {
-    if(bcrypt.compareSync(req.body.user_pass, data.pass)) {
-      res.redirect('/yay');
-    }
-    else {
+    if(data) {
+      if(bcrypt.compareSync(req.body.user_pass, data.pass)) {
+        res.redirect('/yay');
+      }
+    } else {
       res.redirect('/boo');
-    }
+      }
   });
 });
 
